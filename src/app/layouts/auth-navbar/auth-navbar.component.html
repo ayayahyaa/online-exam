@@ -1,0 +1,22 @@
+
+<nav class="nav-container">
+  <div class="language-dropdown">
+    <button class="language-btn" (click)="toggleDropdown()">
+      English <i class="ml-1 fas fa-chevron-down"></i>
+    </button>
+    <ul class="language-options" [class.show]="isMenuOpen">
+      <li>
+        <a href="#" (click)="$event.preventDefault()">AR</a>
+      </li>
+    </ul>
+  </div>
+
+  <ul class="nav-list">
+    <li>
+      <a routerLink="/auth" class="sign-in" aria-current="page">Sign in</a>
+    </li>
+    <li>
+      <a routerLink="/auth/register" class="register" aria-current="page">Register</a>
+    </li>
+  </ul>
+</nav>

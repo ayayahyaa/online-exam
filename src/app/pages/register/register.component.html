@@ -1,0 +1,199 @@
+<section class="section-container">
+  <div class="form-container-register">
+    <div>
+      <h2 class="sign-in-title">Sign up</h2>
+      <form [formGroup]="registerForm" (ngSubmit)="submitRegister()"
+      class="form">
+
+      <div class="input">
+        <input formControlName="username"
+        type="text" placeholder="user Name" class="pl-2 input-field">
+      </div>
+      @if (registerForm.get('username')?.errors && registerForm.get('username')?.touched) {
+        <div class="flex p-4 mb-4 text-red-800 rounded-lg mb-4text-sm bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+          <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="..."/>
+          </svg>
+          <span class="sr-only">Danger</span>
+          <div>
+            <ul class="mt-1.5 list-disc list-inside">
+              @if (registerForm.get('username')?.getError('required')) {
+                <li>username is required</li>
+              } @else if (registerForm.get('username')?.getError('minlength')) {
+                <li>username should be more than or equal 3 chars</li>
+              } @else if (registerForm.get('username')?.getError('maxlength')) {
+                <li>username should be less than or equal 20 chars</li>
+              }
+            </ul>
+          </div>
+        </div>
+      }
+
+
+
+      <div class="input">
+        <input formControlName="firstName"
+        type="name" placeholder="First Name" class="pl-2 input-field">
+      </div>
+      @if (registerForm.get('firstName')?.errors && registerForm.get ('firstName')?.touched) {
+        <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+          <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+          </svg>
+          <span class="sr-only">Danger</span>
+          <div>
+            <ul class="mt-1.5 list-disc list-inside">
+              @if (registerForm.get('firstName')?.getError('required')) {
+                <li>firstName is required</li>
+              }
+              @else if (registerForm.get('firstName')?.getError('minlength')) {
+                <li>firstName should be more than or equal 3 chars</li>
+              }
+              @else if (registerForm.get('firstName')?.getError('maxlength')) {
+                <li>firstName should be less than or equal 20 chars</li>
+              }
+          </ul>
+          </div>
+        </div>
+      }
+
+      <div class="input">
+        <input formControlName="lastName"
+        type="name" placeholder="Last Name" class="pl-2 input-field">
+      </div>
+      @if (registerForm.get('lastName')?.errors && registerForm.get ('lastName')?.touched) {
+        <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+          <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+          </svg>
+          <span class="sr-only">Danger</span>
+          <div>
+            <ul class="mt-1.5 list-disc list-inside">
+              @if (registerForm.get('lastName')?.getError('required')) {
+                <li>lastName is required</li>
+              }
+              @else if (registerForm.get('lastName')?.getError('minlength')) {
+                <li>lastName should be more than or equal 3 chars</li>
+              }
+              @else if (registerForm.get('lastName')?.getError('maxlength')) {
+                <li>lastName should be less than or equal 20 chars</li>
+              }
+          </ul>
+          </div>
+        </div>
+      }
+
+      <div class="input">
+        <input formControlName="email"
+        type="email" placeholder="Email" class="input-field">
+      </div>
+      <app-msg-pattern
+      [form]="registerForm" field="email"
+      [errorMessages]="{
+        required: 'Email is required',
+        email: 'Enter a valid email'
+      }">
+    </app-msg-pattern>
+
+
+      <div class="password">
+        <input formControlName="password"
+        [type]="isPasswordVisible ? 'text':'password'" placeholder="Password" class="input-field">
+        <i class="password-icon fas"
+        [class]="isPasswordVisible ? 'fa-eye' : 'fa-eye-slash'"
+        (click)="togglePasswordVisibility()"></i>
+      </div>
+      @if (registerForm.get('password')?.errors && registerForm.get('password')?.touched) {
+        <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+          <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+          </svg>
+          <span class="sr-only">Danger</span>
+          <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                @if (registerForm.get('password')?.getError('required')) {
+                  <li>Password is required</li>
+                }
+                @else if (registerForm.get('password')) {
+                  <li>Enter valid password</li>
+                }
+            </ul>
+          </div>
+        </div>
+      }
+
+
+      <div class="password">
+        <input formControlName="rePassword"
+        [type]="isPasswordVisible ? 'text':'password'" placeholder="rePassword" class="input-field">
+        <i class="password-icon fas"
+        [class]="isPasswordVisible ? 'fa-eye' : 'fa-eye-slash'"
+        (click)="togglePasswordVisibility()"></i>
+      </div>
+      @if (registerForm.get('rePassword')?.errors && registerForm.get('rePassword')?.touched) {
+        <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+          <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+          </svg>
+          <span class="sr-only">Danger</span>
+          <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                @if (registerForm.get('rePassword')?.getError('required')) {
+                  <li>Password is required</li>
+                }
+                @else if (registerForm.get('rePassword')) {
+                  <li>Enter valid password</li>
+                }
+            </ul>
+          </div>
+        </div>
+      }
+
+      <div class="phone">
+        <input formControlName="phone"
+        type="text" placeholder="phone" class="input-field">
+      </div>
+      @if (registerForm.get('phone')?.errors && registerForm.get('phone')?.touched) {
+        <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+          <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+          </svg>
+          <span class="sr-only">Danger</span>
+          <div>
+              <ul class="mt-1.5 list-disc list-inside">
+                @if (registerForm.get('phone')?.getError('required')) {
+                  <li>Phone is required</li>
+                }
+                @else if (registerForm.get('phone')?.getError('pattern')) {
+                  <li>Enter valid phone</li>
+                }
+            </ul>
+          </div>
+        </div>
+      }
+
+        <div class="mb-4 text-center"> Allready have ac account?
+          <a routerLink="/auth" class="recover">login</a>
+        </div>
+
+
+
+        <button [disabled]="registerForm.invalid"
+        routerLink="/auth"
+        type="submit" class="sign-up-btn disabled:bg-gray-700">
+          <span class="sign-up-text">Create Account</span>
+          @if (isLoading) {
+            <span><i class="mx-5 fas fs-spin fa-spinner"></i></span>
+          }
+        </button>
+        @if (msgError) {
+          <p class="px-2 py-2 text-center text-white bg-red-300 border">{{msgError}}</p>
+        }
+        @if (isSuccess) {
+          <p class="px-2 py-2 text-center text-white bg-green-300 border">Correct Email</p>
+        }
+                <app-social-icons></app-social-icons>
+      </form>
+    </div>
+  </div>
+</section>
