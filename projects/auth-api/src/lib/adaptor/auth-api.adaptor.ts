@@ -62,7 +62,6 @@ export class AuthAPIAdaptorService implements Iadaptor {
   logoutAdaptor(data:ILogout): ILogout{
     return{
       message:data.message,
-      token:data.token
     }
   }
 

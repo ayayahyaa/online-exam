@@ -11,11 +11,12 @@ import { IregisterData } from './interface/IregisterData';
 import { IregisterResData } from './interface/IRegisterResData';
 import { IforgotData } from './interface/IforgotData';
 import { IforgotResData } from './interface/IforgotResData';
-import { IverifyAPIData, IverifyResData } from './interface/IverifyResData';
+import {IverifyResData } from './interface/IverifyResData';
 import { IresetResData } from './interface/IresetResData';
 import { IverifyData } from './interface/IverifyData';
 import { IresetData } from './interface/IresetData';
 import { jwtDecode } from 'jwt-decode';
+import { ILogout } from './interface/ilogout';
 
 
 
@@ -25,6 +26,7 @@ import { jwtDecode } from 'jwt-decode';
 export class AuthApiService implements AuthAPI {
   constructor(private _httpClient :HttpClient, private _authAPIAdaptorService :AuthAPIAdaptorService ,private _router:Router) { }
   userData:any;
+
 
 
     login(data: IloginData): Observable<IloginResData> {
@@ -77,14 +79,12 @@ resendCode(data: IforgotData): Observable<IforgotResData> {
     }))}
 
 
-    logout():any {
-    localStorage.removeItem('token')
-    this.userData = null;
-    this._router.navigate(['/auth'])
-  }
+    logout(): Observable<ILogout> {
+      return this._httpClient.get(AuthEndPoint.LOGOUT).pipe(
+        map ((res:any) => this._authAPIAdaptorService.logoutAdaptor(res)),
+        catchError((err) => {
+          throw err;
+        }))}
 
-  logoutUser(): void {
-    localStorage.removeItem('token');
-    this.userData = null;
-    this._router.navigate(['/auth'])
-  }}
+
+}

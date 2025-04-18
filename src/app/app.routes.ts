@@ -2,14 +2,15 @@ import { Routes } from '@angular/router';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { NotFoundPagesComponent } from './pages/not-found-pages/not-found-pages.component';
 import { authGuard } from './guards/auth.guard';
-import { MainLayoutComponent } from './layouts/main-layout/main-layout.component';
 import { loggedGuard } from './guards/logged.guard';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
   {
     path: 'auth',
     component: AuthLayoutComponent,
+    canActivate: [loggedGuard],
     children: [
       {
         path: '',
@@ -28,14 +29,13 @@ export const routes: Routes = [
       },
     ]
   },
-
+  { path: '', redirectTo: '', pathMatch: 'full' },
   {
-    path: '',
-    component: MainLayoutComponent,
-    canActivate: [authGuard],
+    path: 'dashboard',
+    component: DashboardComponent,
     children: [
       {
-        path: 'home',
+        path: '',
         loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
         title: 'home',
       },
@@ -51,3 +51,4 @@ export const routes: Routes = [
     ]
   },
 ];
+
