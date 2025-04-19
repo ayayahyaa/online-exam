@@ -40,9 +40,14 @@ export const routes: Routes = [
         title: 'home',
       },
       {
-        path: 'exams',
-        loadComponent: () => import('./pages/exams/exams.component').then(m => m.ExamsComponent),
-        title: 'exams'
+        path: 'quiz-history',
+        loadComponent: () => import('./pages/quiz-history/quiz-history.component').then(m => m.QuizHistoryComponent),
+        title: 'quiz-history'
+      },
+      {
+        path: 'select-diploma',
+        loadComponent: () => import('./pages/select-diploma/select-diploma.component').then(m => m.SelectDiplomaComponent),
+        title: 'select-diploma'
       },
   {
     path: '**',
