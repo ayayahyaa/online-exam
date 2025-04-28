@@ -23,7 +23,7 @@ export class SubjectApiService implements SubjectsApi {
 
 
   addSubject(): Observable<IAddSubjectDataTs> {
-        return this._httpClient.post(SubjectsEndPoint.ADD_SUBJECT).pipe(
+        return this._httpClient.get(SubjectsEndPoint.ADD_SUBJECT).pipe(
           map ((res:any) => this._subjectAPIAdaptorService.addSubjectAdaptor(res)),
           catchError((err) => {
             throw err;
@@ -31,7 +31,7 @@ export class SubjectApiService implements SubjectsApi {
 
 
   ubdateSubject(): Observable<IUpdateSubjectDataTs> {
-        return this._httpClient.put(SubjectsEndPoint.UPDATE_SUBJECT).pipe(
+        return this._httpClient.get(SubjectsEndPoint.UPDATE_SUBJECT).pipe(
       map ((res:any) => this._subjectAPIAdaptorService.ubdateSubjectAdaptor(res)),
       catchError((err) => {
         throw err;

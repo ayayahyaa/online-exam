@@ -22,7 +22,7 @@ export class ExamsApiService implements ExamsApi {
 
 
     addExams(): Observable<IAddExams> {
-          return this._httpClient.post(ExamsEndPoint.ADD_EXAMS).pipe(
+          return this._httpClient.get(ExamsEndPoint.ADD_EXAMS).pipe(
             map ((res:any) => this._examsAPIAdaptorService.addExamsAdaptor(res)),
             catchError((err) => {
               throw err;

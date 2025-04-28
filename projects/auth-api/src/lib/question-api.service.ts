@@ -26,7 +26,7 @@ export class QuestionApiService implements QuestiontApi {
 
 
   addQuestion(): Observable<IaddQuestionData> {
-            return this._httpClient.post(QuestionEndPoint.ADD_QUESTION).pipe(
+            return this._httpClient.get(QuestionEndPoint.ADD_QUESTION).pipe(
               map ((res:any) => this._questionsAPIAdaptorService.addQuestionAdaptor(res)),
               catchError((err) => {
                 throw err;
@@ -65,7 +65,7 @@ export class QuestionApiService implements QuestiontApi {
                   }))}
 
   checkQuestion(): Observable<ICheckQuesionData> {
-              return this._httpClient.post(QuestionEndPoint.CHECK_QUESTIONS).pipe(
+              return this._httpClient.get(QuestionEndPoint.CHECK_QUESTIONS).pipe(
                 map ((res:any) => this._questionsAPIAdaptorService.CheckQuestionAdaptor(res)),
                 catchError((err) => {
                       throw err;
