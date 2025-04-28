@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { inject } from '@angular/core';
 import { AuthApiService } from '../../../../projects/auth-api/src/public-api';
 import { Subscription } from 'rxjs';
@@ -8,7 +8,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [RouterOutlet , RouterLink , RouterLinkActive],
+  imports: [RouterOutlet , RouterLink ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

@@ -20,24 +20,6 @@ export class QuestionApiService implements QuestiontApi {
 
 
   constructor(private _httpClient :HttpClient, private _questionsAPIAdaptorService :QuestionsAPIAdaptorService ,private _router:Router) { }
-  userData:any;
-
-
-
-
-  addQuestion(): Observable<IaddQuestionData> {
-            return this._httpClient.get(QuestionEndPoint.ADD_QUESTION).pipe(
-              map ((res:any) => this._questionsAPIAdaptorService.addQuestionAdaptor(res)),
-              catchError((err) => {
-                throw err;
-              }))}
-
-  getAllQuestion(): Observable<IGetAllQuestionData> {
-            return this._httpClient.get(QuestionEndPoint.GET_ALL_QUESTION).pipe(
-              map ((res:any) => this._questionsAPIAdaptorService.getAllQuestionAdaptor(res)),
-              catchError((err) => {
-                throw err;
-              }))}
 
 
   getAllQuestionOmExams(): Observable<IGetAllQuestionOnExamstData> {
@@ -47,33 +29,5 @@ export class QuestionApiService implements QuestiontApi {
                 throw err;
               }))}
 
-
-  getUserHistory(): Observable<IGetUserHistoryData> {
-              return this._httpClient.get(QuestionEndPoint.GET_USER_HISTORY).pipe(
-                map ((res:any) => this._questionsAPIAdaptorService.getUserHistoryAdaptor(res)),
-                catchError((err) => {
-                  throw err;
-                }))}
-
-
-
-  getSingleQuestion(): Observable<IGetSingleQuestionData> {
-              return this._httpClient.get(QuestionEndPoint.GET_SINGLE_QUESTION).pipe(
-                map ((res:any) => this._questionsAPIAdaptorService.getSingleQuestionAdaptor(res)),
-                catchError((err) => {
-                    throw err;
-                  }))}
-
-  checkQuestion(): Observable<ICheckQuesionData> {
-              return this._httpClient.get(QuestionEndPoint.CHECK_QUESTIONS).pipe(
-                map ((res:any) => this._questionsAPIAdaptorService.CheckQuestionAdaptor(res)),
-                catchError((err) => {
-                      throw err;
-                  }))}
-
-  getUserData():void{
-              this.userData =   jwtDecode(localStorage.getItem("token")!)
-              console.log(this.userData);
-              }
 
 }
