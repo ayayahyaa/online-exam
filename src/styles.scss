@@ -57,7 +57,7 @@
 //auth-layout
 
 .auth-container {
-  @apply flex flex-col lg:flex-row justify-between bg-[#FFFFFF];
+  @apply flex flex-col justify-start items-start lg:flex-row h-screen bg-[#FFFFFF];
 }
 
 .auth-box {
@@ -65,11 +65,11 @@
 }
 
 .auth-content {
-  @apply w-full max-w-[30.125rem] px-6 lg:pt-[5rem] lg:pl-[4.9375rem] lg:pr-[9.1875rem] lg:pb-[10.7762rem] gap-[5rem];
+  @apply flex flex-col justify-between w-full max-w-[30.125rem] pt-[3rem] pb-[]  h-full px-6 lg:pt-[5rem] lg:pl-[4.9375rem] lg:pr-[9.1875rem] lg:pb-[10.7762rem] gap-[5rem];
 }
 
 .auth-text {
-  @apply w-full lg:w-[30.125rem] gap-[.5rem] h-auto lg:h-[16.0625rem];
+  @apply flex flex-col w-full lg:w-[30.125rem] gap-[.5rem] h-auto lg:h-[16.0625rem];
 }
 
 .auth-title {
@@ -91,12 +91,12 @@
 //login , register , forgot-password , verify-code , set-password
 
 @layer components {
-  .section-container {
-    @apply flex items-center justify-center;
+  .section-container-login {
+    @apply flex items-center justify-center pt-12;
   }
 
-  .form-container {
-    @apply flex items-center min-h-screen top-72 w-[25.625rem] h-[30.625rem] gap-8;
+  .form-container-login {
+    @apply flex items-center  top-72 w-[25.625rem] h-[30.625rem] gap-8;
   }
 
   .sign-in-title {
@@ -163,12 +163,18 @@
 
 //register
 
+.section-container-register {
+  @apply flex items-center justify-center ;
+}
+
+.form-container-register {
+  @apply flex items-center  top-72 w-[25.625rem] h-lvh gap-8;
+}
+
 .sign-up-title {
   @apply w-[25.625rem] h-[1.9338rem] font-bold text-xl leading-[100%] tracking-[0rem] text-black ;
 }
-.form-container-register {
-  @apply flex items-center min-h-screen top-72 mt-11 w-[25.625rem] h-[30.625rem] gap-8;
-}
+
 .link-login {
   @apply  font-normal text-base leading-[100%] tracking-[0rem] text-[#4461F2] pointer-events-auto;
 }
@@ -187,9 +193,14 @@
 .forgot-title {
   @apply w-[25.625rem]  font-bold text-xl leading-[100%] tracking-[0rem] text-black mb-6 ;
 }
-.form-container-forgot {
-  @apply flex items-center min-h-screen top-72 pb-20 w-[25.625rem] h-[30.625rem] gap-8;
+.section-container-forgot {
+  @apply flex items-center justify-center pt-12;
 }
+
+.form-container-forgot {
+  @apply flex items-center  top-72 w-[25.625rem] h-[30.625rem] gap-8;
+}
+
 
 //verify
 .verify-title {

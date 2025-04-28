@@ -1,4 +1,4 @@
-import { Observable } from "rxjs";
+
 import { IforgotAPIData, IforgotResData } from "./IforgotResData";
 import { IloginAPIData, IloginResData } from "./IloginRes";
 import { IregisterAPIData, IregisterResData } from "./IRegisterResData";
@@ -14,7 +14,5 @@ export interface Iadaptor {
   resetAdaptor(data:IresetAPIData):IresetResData,
   resendCodeAdaptor(data:IforgotAPIData):IforgotResData,
   logoutAdaptor(data:ILogout):ILogout,
-
-
 
 }

@@ -52,7 +52,7 @@ export class LoginComponent {
             localStorage.setItem('token', res.token)
             this._authApiService.getUserData()
 
-          this._router.navigate(['/home']);
+          this._router.navigate(['/dashboard/home']);
           }, 1000);
           this.isSuccess = res.message
         }

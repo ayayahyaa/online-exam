@@ -35,7 +35,7 @@ export const routes: Routes = [
     component: DashboardComponent,
     children: [
       {
-        path: '',
+        path: 'home',
         loadComponent: () => import('./pages/home/home.component').then(m => m.HomeComponent),
         title: 'home',
       },
