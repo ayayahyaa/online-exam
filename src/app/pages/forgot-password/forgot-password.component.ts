@@ -48,23 +48,19 @@ export class ForgotPasswordComponent {
 
 
   verifyEmailSubmit(): void {
-    let emailValue = this.verifyEmail.get('email')?.value
-    this.resetPassword.get('email')?.patchValue(emailValue)
-    this.forgotSubscription=  this._authApiService.forgotPassword(this.verifyEmail.value).subscribe({
+    this.verifyEmail.get('email')?.value
+    this._authApiService.forgotPassword(this.verifyEmail.value).subscribe({
       next: (res) => {
         console.log(res)
         if (res.message === 'success') {
           this.step = 2;
+          console.log('step changed to' , this.step)
         }
       },
       error: (err) => {
         console.log(err)
       }
     })}
-    ngOnDestroy(): void {
-      this.forgotSubscription?.unsubscribe();
-
-  }
 
 
 

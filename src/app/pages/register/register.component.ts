@@ -76,7 +76,8 @@ export class RegisterComponent {
     }else{
       this.registerForm.markAllAsTouched();
     }
-    }    ngOnDestroy(): void {
+    }
+     ngOnDestroy(): void {
       this.registerSubscription?.unsubscribe();
   }
 
