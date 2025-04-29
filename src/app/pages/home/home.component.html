@@ -13,90 +13,31 @@
     <!-- Responsive grid for cards using @for -->
     <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
 
-      <article
-        class="relative aspect-square overflow-hidden rounded-xl shadow-lg transition-transform duration-300 hover:scale-[1.02] focus-within:scale-[1.02]"
-        tabindex="0">
-        <!-- Optimized image with lazy loading -->
-        <img src="/images/media/one.jpeg" alt="Front-end development concepts"
-          class="object-cover w-full h-full" loading="lazy" />
+@for( sub of subject.message; track subject.metadata ){
+  <article (click)="getAllSubject()"
+  class="relative aspect-square overflow-hidden rounded-xl shadow-lg transition-transform duration-300 hover:scale-[1.02] focus-within:scale-[1.02]"
+  tabindex="0">
+  <!-- Optimized image with lazy loading -->
+  <img [src]="" alt="Front-end development concepts"
+    class="object-cover w-full h-full" loading="lazy" />
 
-        <!-- Content overlay with backdrop blur and gradient -->
-        <div class="absolute inset-0 flex flex-col items-center justify-end w-full p-6 to-transparent">
-          <div class="w-full p-4 transition-all duration-300 rounded-lg bg-colorBackgroundTitleCard backdrop-blur-sm">
-            <h3 class="mb-2 text-lg font-bold text-white">Front-End Web Developer</h3>
-            <p class="text-sm font-bold text-gray-200">Voluptatem aut ut dignissimos blanditiis</p>
-          </div>
-        </div>
+  <!-- Content overlay with backdrop blur and gradient -->
+  <div class="absolute inset-0 flex flex-col items-center justify-end w-full p-6 to-transparent">
+    <div class="w-full p-4 transition-all duration-300 rounded-lg bg-colorBackgroundTitleCard backdrop-blur-sm">
+      <h3 class="mb-2 text-lg font-bold text-white">{{subject.message}}</h3>
+      <p class="text-sm font-bold text-gray-200">{{subject.metadata}}</p>
+    </div>
+  </div>
 
-        <!-- Accessible focus ring -->
-        <span
-          class="absolute inset-0 pointer-events-none ring-2 ring-inset ring-transparent group-focus:ring-primary-500 rounded-xl"></span>
-      </article>
+  <!-- Accessible focus ring -->
+  <span
+    class="absolute inset-0 pointer-events-none ring-2 ring-inset ring-transparent group-focus:ring-primary-500 rounded-xl"></span>
+</article>
 
-      <article
-        class="relative aspect-square overflow-hidden rounded-xl shadow-lg transition-transform duration-300 hover:scale-[1.02] focus-within:scale-[1.02]"
-        tabindex="0">
-        <!-- Optimized image with lazy loading -->
-        <img src="/images/media/two.jpeg" alt="Front-end development concepts"
-          class="object-cover w-full h-full" loading="lazy" />
-
-        <!-- Content overlay with backdrop blur and gradient -->
-        <div class="absolute inset-0 flex flex-col items-center justify-end p-6 to-transparent">
-          <div class="w-full p-4 transition-all duration-300 rounded-lg bg-colorBackgroundTitleCard backdrop-blur-sm">
-            <h3 class="mb-2 text-lg font-bold text-white">Front-End Web Developer</h3>
-            <p class="text-sm font-bold text-gray-200">Voluptatem aut ut dignissimos blanditiis</p>
-          </div>
-        </div>
-
-        <!-- Accessible focus ring -->
-        <span
-          class="absolute inset-0 pointer-events-none ring-2 ring-inset ring-transparent group-focus:ring-primary-500 rounded-xl"></span>
-      </article>
-
-
-      <article
-        class="relative aspect-square overflow-hidden rounded-xl shadow-lg transition-transform duration-300 hover:scale-[1.02] focus-within:scale-[1.02]"
-        tabindex="0">
-        <!-- Optimized image with lazy loading -->
-        <img src="/images/media/threejpeg.jpeg" alt="Front-end development concepts"
-          class="object-cover w-full h-full" loading="lazy" />
-
-        <!-- Content overlay with backdrop blur and gradient -->
-        <div class="absolute inset-0 flex flex-col items-center justify-end p-6 to-transparent">
-          <div class="w-full p-4 transition-all duration-300 rounded-lg bg-colorBackgroundTitleCard backdrop-blur-sm">
-            <h3 class="mb-2 text-lg font-bold text-white">Front-End Web Developer</h3>
-            <p class="text-sm font-bold text-gray-200">Voluptatem aut ut dignissimos blanditiis</p>
-          </div>
-        </div>
-
-        <!-- Accessible focus ring -->
-        <span
-          class="absolute inset-0 pointer-events-none ring-2 ring-inset ring-transparent group-focus:ring-primary-500 rounded-xl"></span>
-      </article>
-
-
-      <article
-        class="relative aspect-square overflow-hidden rounded-xl shadow-lg transition-transform duration-300 hover:scale-[1.02] focus-within:scale-[1.02]"
-        tabindex="0">
-        <!-- Optimized image with lazy loading -->
-        <img src="/images/media/four.jpeg" alt="Front-end development concepts"
-          class="object-cover w-full h-full" loading="lazy" />
-
-        <!-- Content overlay with backdrop blur and gradient -->
-        <div class="absolute inset-0 flex flex-col items-center justify-end p-6 to-transparent">
-          <div class="w-full p-4 transition-all duration-300 rounded-lg bg-colorBackgroundTitleCard backdrop-blur-sm">
-            <h3 class="mb-2 text-lg font-bold text-white">Front-End Web Developer</h3>
-            <p class="text-sm font-bold text-gray-200">Voluptatem aut ut dignissimos blanditiis</p>
-          </div>
-        </div>
+}
 
 
 
-        
-        <!-- Accessible focus ring -->
-        <span
-          class="absolute inset-0 pointer-events-none ring-2 ring-inset ring-transparent group-focus:ring-primary-500 rounded-xl"></span>
-      </article>
 
     </div>
   </div>

@@ -14,6 +14,9 @@ export class SubjectAPIAdaptorService implements IadaptorSubjects {
   getAllSubjectsAdaptor(data:IGetAllSubjectData): IGetAllSubjectData {
     return{
       message:data.message,
+      metadata:data.metadata,
+      subjects:data.subjects
+
     }
   }
 
