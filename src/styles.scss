@@ -6,7 +6,7 @@
 // auth navbar
 @layer components {
   .nav-container {
-    @apply flex flex-row items-center justify-end gap-[1.5rem] px-4 sm:pe-20 pt-6 sm:pt-20;
+    @apply flex flex-row items-center justify-end gap-[1.5rem] px-4 sm:pe-20 pt-6 sm:pt-20 ;
   }
 
   .language-btn {
@@ -57,15 +57,15 @@
 //auth-layout
 
 .auth-container {
-  @apply flex flex-col justify-start items-start lg:flex-row h-screen bg-[#FFFFFF];
+  @apply lg:overflow-hidden overflow-auto flex flex-col justify-start items-start lg:flex-row h-auto min-h-screen bg-[#FFFFFF];
 }
 
 .auth-box {
-  @apply w-full lg:w-[50%] h-auto lg:h-screen rounded-tr-[50px] lg:rounded-tr-[100px] lg:rounded-br-[100px] bg-[#F0F4FC] shadow-[0px_5px_100px_0px_#0000001A] flex items-center justify-center;
+  @apply h-auto min-h-screen w-full lg:w-[50%]  lg:h-screen rounded-tr-[50px] lg:rounded-tr-[100px] lg:rounded-br-[100px] bg-[#F0F4FC] shadow-[0px_5px_100px_0px_#0000001A] flex items-center justify-center;
 }
 
 .auth-content {
-  @apply flex flex-col justify-between w-full max-w-[30.125rem] pt-[3rem] pb-[]  h-full px-6 lg:pt-[5rem] lg:pl-[4.9375rem] lg:pr-[9.1875rem] lg:pb-[10.7762rem] gap-[5rem];
+  @apply flex flex-col justify-between w-full max-w-[30.125rem] pt-[3rem] pb-[3rem]  px-6 lg:pt-[5rem] lg:pl-[4.9375rem] lg:pr-[9.1875rem] lg:pb-[10.7762rem] gap-[5rem];
 }
 
 .auth-text {
@@ -168,7 +168,7 @@
 }
 
 .form-container-register {
-  @apply flex items-center  top-72 w-[25.625rem] h-lvh gap-8;
+  @apply flex items-center  top-72 w-[25.625rem] min-h-[30rem] gap-8;
 }
 
 .sign-up-title {

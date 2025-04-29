@@ -3,38 +3,90 @@
 @tailwind utilities;
 @layer components {
   .nav-container {
-    @apply flex items-center justify-end top-80 left-[62.375rem] gap-[3.0625rem] pe-20 pt-20;
+    @apply flex flex-row items-center justify-end gap-[1.5rem] px-4 sm:pe-20 pt-6 sm:pt-20;
   }
-  .language {
-    @apply w-[4.25rem] h-[1.5rem] font-normal text-[1.25rem] leading-[100%];
+  .language-btn {
+    @apply inline-flex items-center justify-center
+      px-3 py-2 text-[1rem] sm:text-[1.25rem] leading-[100%];
   }
   .nav-list {
-    @apply flex items-center gap-[1.5rem];
+    @apply flex items-center gap-[1rem] sm:gap-[1.5rem];
   }
   .sign-in {
-    @apply w-[4.1875rem] h-[1.5rem] font-bold text-[1.25rem] leading-[100%] text-[#4461F2];
+    @apply font-bold text-[1rem] sm:text-[1.25rem] leading-[100%] text-[#4461F2];
   }
   .register {
-    @apply inline-flex items-center justify-center rounded-[.9375rem] border-[.0625rem] border-[#E0E0E9]
-          pt-[1.1875rem] pr-[1.3125rem] pb-[1.1875rem] pl-[1.1875rem]
-          w-[4.875rem] h-[1.5rem] font-normal text-[1.25rem] leading-[100%] text-[#4461F2];
+    @apply inline-flex items-center justify-center rounded-[.9375rem] border border-[#E0E0E9]
+      px-3 py-2 text-[1rem] sm:text-[1.25rem] leading-[100%] text-[#4461F2];
+  }
+  .language-dropdown {
+    @apply relative inline-block;
+  }
+  .language-options {
+    @apply absolute hidden bg-white border border-gray-300 shadow-md z-50;
+    top: 100%;
+    right: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .language-options.show {
+    @apply block;
+  }
+  .language-options li a {
+    @apply block px-4 py-2 text-[1rem] sm:text-[1.25rem] leading-[100%] text-[#333] no-underline;
+  }
+  .language-options li a:hover {
+    @apply bg-gray-100;
   }
 }
+.auth-container {
+  @apply flex flex-col justify-start items-start lg:flex-row h-screen bg-[#FFFFFF];
+}
+
+.auth-box {
+  @apply w-full lg:w-[50%] h-auto lg:h-screen rounded-tr-[50px] lg:rounded-tr-[100px] lg:rounded-br-[100px] bg-[#F0F4FC] shadow-[0px_5px_100px_0px_#0000001A] flex items-center justify-center;
+}
+
+.auth-content {
+  @apply flex flex-col justify-between w-full max-w-[30.125rem] pt-[3rem] pb-[]  h-full px-6 lg:pt-[5rem] lg:pl-[4.9375rem] lg:pr-[9.1875rem] lg:pb-[10.7762rem] gap-[5rem];
+}
+
+.auth-text {
+  @apply flex flex-col w-full lg:w-[30.125rem] gap-[.5rem] h-auto lg:h-[16.0625rem];
+}
+
+.auth-title {
+  @apply font-bold text-[2.5rem] lg:text-[3.125rem] leading-[150%] tracking-[0rem];
+}
+
+.auth-mini-title {
+  @apply font-bold text-[3rem] lg:text-[3.75rem] leading-[150%] tracking-[0rem] text-[#122D9C];
+}
+
+.auth-p {
+  @apply font-normal text-[1rem] lg:text-[1.125rem] leading-[2rem] lg:leading-[2.5rem] tracking-[0rem] text-[#000000] mb-[1.25rem];
+}
+
+.auth-image-container {
+  @apply w-full max-w-[25.5rem] h-auto mt-8;
+}
+
 @layer components {
-  .section-container {
-    @apply flex items-center justify-center;
+  .section-container-login {
+    @apply flex items-center justify-center pt-12;
   }
-  .form-container {
-    @apply flex items-center min-h-screen top-72 w-[25.625rem] h-[30.625rem] gap-8;
+  .form-container-login {
+    @apply flex items-center  top-72 w-[25.625rem] h-[30.625rem] gap-8;
   }
   .sign-in-title {
-    @apply w-[25.625rem] font-bold text-xl leading-[100%] tracking-[0rem] text-black;
+    @apply w-[25.625rem] font-bold text-xl leading-[100%] tracking-[0rem] mb-6;
   }
   .form {
     @apply w-full gap-8;
   }
   .input {
-    @apply mb-4 w-[25.625rem] h-[3.4688rem] rounded-md gap-1 text-[#F9F9F9];
+    @apply relative mb-4 w-[25.625rem] h-[3.4688rem] rounded-md gap-1 text-[#F9F9F9];
   }
   .input-field {
     @apply w-[25.625rem] h-[3.4825rem] rounded-md border border-solid border-[#E0E0E9] text-[#A1A4A9] focus:border-[#3364FD];
@@ -78,12 +130,16 @@
   box-shadow: 0px 18px 30px 0 rgba(68, 97, 242, 0.1098039216);
 }
 
-.sign-up-title {
-  @apply w-[25.625rem] h-[1.9338rem] font-bold text-xl leading-[100%] tracking-[0rem] text-black;
+.section-container-register {
+  @apply flex items-center justify-center;
 }
 
 .form-container-register {
-  @apply flex items-center min-h-screen top-72 mt-11 w-[25.625rem] h-[30.625rem] gap-8;
+  @apply flex items-center  top-72 w-[25.625rem] h-lvh gap-8;
+}
+
+.sign-up-title {
+  @apply w-[25.625rem] h-[1.9338rem] font-bold text-xl leading-[100%] tracking-[0rem] text-black;
 }
 
 .link-login {
@@ -94,16 +150,24 @@
   @apply w-[25.625rem] rounded-xl p-2 gap-2 bg-[#4461F2];
 }
 
+.phone {
+  @apply relative mb-4 w-[25.625rem] h-[3.4688rem] rounded-md gap-1 text-[#F9F9F9];
+}
+
 .sign-up-text {
-  @apply w-14 h-6 font-normal text-base leading-[100%] tracking-[0rem] text-white;
+  @apply disabled:bg-gray-700 w-14 h-6 font-normal text-base leading-[100%] tracking-[0rem] text-white;
 }
 
 .forgot-title {
-  @apply w-[25.625rem]  font-bold text-xl leading-[100%] tracking-[0rem] text-black;
+  @apply w-[25.625rem]  font-bold text-xl leading-[100%] tracking-[0rem] text-black mb-6;
+}
+
+.section-container-forgot {
+  @apply flex items-center justify-center pt-12;
 }
 
 .form-container-forgot {
-  @apply flex items-center min-h-screen top-72 pb-20 w-[25.625rem] h-[30.625rem] gap-8;
+  @apply flex items-center  top-72 w-[25.625rem] h-[30.625rem] gap-8;
 }
 
 .verify-title {
@@ -127,7 +191,7 @@
 }
 
 .setpassword-title {
-  @apply w-[25.625rem] font-bold text-xl leading-[100%] tracking-[0rem] text-black;
+  @apply w-[25.625rem] font-bold text-xl leading-[100%] tracking-[0rem] text-black mb-6;
 }
 
 .form-container-setpassword {

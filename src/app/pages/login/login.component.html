@@ -1,9 +1,10 @@
-<section class="section-container-login">
+<section class=" section-container-login">
   <div class="form-container-login">
     <div>
       <h2 class="sign-in-title">Sign in</h2>
       <form [formGroup]="loginForm" (ngSubmit)="submitLogin()"
       class="form">
+
         <div class="input">
           <input type="email"
           formControlName ='email'
@@ -16,6 +17,9 @@
           email: 'Enter a valid email'
         }">
       </app-msg-pattern>
+
+
+
 
       <div class="password">
         <input formControlName="password"
