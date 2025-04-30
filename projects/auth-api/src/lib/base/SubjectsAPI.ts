@@ -1,6 +1,8 @@
-import { Observable } from "rxjs"
+import { Observable } from "rxjs";
+import { Subject } from "../../../../../src/app/core/interfaces-subject/subject-interfaces";
+
 
 
 export abstract class SubjectsApi {
-  abstract getAllSubjects(data:any):Observable<any>
+  abstract getAllSubject(data:Subject):Observable<Subject>
 }

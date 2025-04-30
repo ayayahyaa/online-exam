@@ -1,6 +1,6 @@
 import { IGetAllSubjectData } from './../../../../projects/auth-api/src/lib/interface/interfaces-subjects/iget-all-subject-data.ts';
 import { Router } from '@angular/router';
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { SubjectApiService } from '../../../../projects/auth-api/src/lib/subject-api.service';
 
 
@@ -10,7 +10,7 @@ import { SubjectApiService } from '../../../../projects/auth-api/src/lib/subject
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit  {
   private readonly router = inject(Router)
   private readonly subjectApiService = inject(SubjectApiService)
   subject: IGetAllSubjectData  = {} as IGetAllSubjectData;
@@ -18,10 +18,16 @@ export class HomeComponent {
 
 
 
+  ngOnInit(): void {
+    this.getAllSubject();
+  }
+
+
+
 getAllSubject(){
     this.subjectApiService.getAllSubjects(10).subscribe({
       next:(res)=>{
-        console.log(res.message)
+        console.log(res)
         this.subject = res;
       },
     })
