@@ -5,12 +5,12 @@ import * as QuestionActions from './question.action';
 import * as QuestionSelectors from '../question/question.selector';
 import * as ExamActions from '../exam/exam.action';
 import { Store } from '@ngrx/store';
-import { QuestionApiService } from '../../../../projects/auth-api/src/lib/question-api.service';
+import { QuestionsService } from '../../core/services/questions.service';
 
 @Injectable()
 export class QuestionsEffects {
   private readonly _actions$ = inject(Actions);
-  private readonly _questionApiService = inject(QuestionApiService);
+  private readonly _questionsService = inject(QuestionsService);
   private readonly _store = inject(Store);
 
   // mapping to a different action
@@ -18,7 +18,7 @@ export class QuestionsEffects {
     this._actions$.pipe(
       ofType(QuestionActions.loadQuestions),
       switchMap((action) =>
-        this._questionApiService.getAllQuestionOmExams(action.examId).pipe(
+        this._questionsService.allQuestionsOnExam(action.examId).pipe(
           tap((action) => console.log(action)),
           map((dataRes) => {
             tap((dataRes) => console.log('The data : ', dataRes));

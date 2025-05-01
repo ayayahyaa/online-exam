@@ -1,3 +1,4 @@
+import { Subject } from './../interfaces-subject/subject-interfaces';
 import { Injectable } from '@angular/core';
 import { Adapter } from '../interfaces/adaptor';
 import {
@@ -8,7 +9,6 @@ import {
   QuestionsAdaptResponse,
   QuestionsResponse,
 } from '../interfaces-question/question-interfaces';
-import { Subject } from '../interfaces-subject/subject-interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +23,13 @@ export class MainAPIAdapter implements Adapter {
       icon:data.icon,
       createdAt:data.createdAt
 }};
+  subjectListAdaptor(data:Subject []):Subject[]{
+    return data.map(subject => this.subjectAdapter(subject))
+  }
+
+
+
+
 
   examAdapter(data: ExamsResponse): ExamsAdaptResponse {
     return {

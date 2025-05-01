@@ -10,7 +10,6 @@ export const routes: Routes = [
   {
     path: 'auth',
     component: AuthLayoutComponent,
-    canActivate: [loggedGuard],
     children: [
       {
         path: '',
@@ -33,7 +32,6 @@ export const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
-    canActivate: [authGuard],
     children: [
       {
         path: 'home',

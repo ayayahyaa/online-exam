@@ -23,18 +23,24 @@
 
 
 
-      <button class="px-6 py-2 text-sm font-semibold text-white bg-blue-600 rounded-2xl hover:bg-blue-700">
+      <button (click)="startExam()" class="px-6 py-2 text-sm font-semibold text-white bg-blue-600 rounded-2xl hover:bg-blue-700">
         Start
       </button>
     </div>
-
-
-
-
-    <app-custom-modal></app-custom-modal>
   </div>
-
-
-
-
 </section>
+
+
+
+@if(isOpen$ | async){
+  <app-custom-modal>
+    @switch (examStatus$ | async) { @case ("Started") {
+
+    <app-exam></app-exam>
+    } @case ("Completed") {
+    <app-exam-score></app-exam-score>
+    } @case ("Review Answers") {
+    <app-exam-summry></app-exam-summry>
+    } }
+  </app-custom-modal>
+  }

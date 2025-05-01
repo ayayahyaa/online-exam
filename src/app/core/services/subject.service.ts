@@ -15,11 +15,11 @@ export class SubjectService implements SubjectsApi {
       private readonly _httpClient = inject(HttpClient);
       private readonly _mainAPIAdapter = inject(MainAPIAdapter);
 
-      getAllSubject(): Observable<Subject> {
+      getAllSubject(): Observable<Subject[]> {
         return this._httpClient
-          .get<Subject>(environment.apiUrl + '/' + SubjectEndPoint.GET_ALL_SUBJECT)
+          .get<Subject[]>(environment.apiUrl + '/' + SubjectEndPoint.GET_ALL_SUBJECT)
           .pipe(
-            map((res: Subject) => this._mainAPIAdapter.subjectAdapter(res)),
+            map((res: Subject[]) => this._mainAPIAdapter.subjectListAdaptor(res)),
             catchError((err: ErrorResponse) => throwError(() => err))
           );
       }

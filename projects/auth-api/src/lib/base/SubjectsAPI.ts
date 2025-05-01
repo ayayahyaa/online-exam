@@ -4,5 +4,5 @@ import { Subject } from "../../../../../src/app/core/interfaces-subject/subject-
 
 
 export abstract class SubjectsApi {
-  abstract getAllSubject(data:Subject):Observable<Subject>
+  abstract getAllSubject():Observable<Subject []>
 }
