@@ -3,7 +3,7 @@ import { QuestionAdapt } from '../../../../core/interfaces-question/question-int
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { FormControl, FormGroup , ReactiveFormsModule, } from '@angular/forms';
-import * as QuestionAction from '../../../../../app/store/question/question.selector';
+import * as QuestionAction from '../../../../../app/store/question/question.action';
 import * as QuestionSelectors from '../../../../../app/store/question/question.selector';
 import { AsyncPipe, CommonModule } from '@angular/common';
 
@@ -116,7 +116,7 @@ export class ExamComponent implements OnInit, OnDestroy {
     const selectedVal = this.quizForm.get('selectedAnswer')?.value;
     // 2- Update the question with the selected answer
     this._store.dispatch(
-      QuestionActions.updateQuestion({
+      QuestionAction.updateQuestion({
         questionId: this.currentQuestionObj._id,
         selectedAnswer: selectedVal,
       })
