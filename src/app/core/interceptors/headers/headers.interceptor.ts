@@ -23,7 +23,6 @@ export const headersInterceptor: HttpInterceptorFn = (req, next) => {
       localStorage.setItem('userId', (jwtDecode(token) as { id: string }).id);
       return next(req);
     } else {
-      router.navigate(['/auth']);
       return next(req);
     }
   }
