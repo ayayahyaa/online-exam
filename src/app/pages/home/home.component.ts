@@ -9,10 +9,13 @@ import { Subject } from '../../core/interfaces-subject/subject-interfaces';
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
-export class HomeComponent  {
+export class HomeComponent implements OnInit  {
   private readonly _subjectService = inject(SubjectService);
   subjects:WritableSignal<Subject[]> = signal([])
 
+ngOnInit(): void {
+  this.getSubject()
+}
 
   getSubject():void{
     this._subjectService.getAllSubject().subscribe({

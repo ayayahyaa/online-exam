@@ -1,6 +1,6 @@
-import { IGetAllSubjectData } from "./iget-all-subject-data.ts";
+import { Subject } from "../../../../../../src/app/core/interfaces-subject/subject-interfaces.js";
 
 export interface IadaptorSubjects {
-  getAllSubjectsAdaptor(data:IGetAllSubjectData):IGetAllSubjectData,
+  getAllSubjectsAdaptor(data:any):Subject[],
 
 }

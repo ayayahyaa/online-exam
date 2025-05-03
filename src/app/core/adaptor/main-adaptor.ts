@@ -16,7 +16,7 @@ import {
 export class MainAPIAdapter implements Adapter {
 
 
-  subjectAdapter(data: Subject): Subject {
+  subjectAdapter(data: Subject): Subject  {
     return {
       _id:data._id,
       name:data.name,

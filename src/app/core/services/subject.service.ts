@@ -1,3 +1,4 @@
+import { Subject } from './../interfaces-subject/subject-interfaces';
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MainAPIAdapter } from '../adaptor/main-adaptor';
@@ -6,7 +7,6 @@ import { environment } from '../../env/env';
 import { SubjectEndPoint } from '../../../../projects/auth-api/src/lib/enums/subjectApi.endPoint';
 import { ErrorResponse } from '../interfaces/error';
 import { SubjectsApi } from '../../../../projects/auth-api/src/lib/base/SubjectsAPI';
-import { Subject } from '../interfaces-subject/subject-interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -17,9 +17,9 @@ export class SubjectService implements SubjectsApi {
 
       getAllSubject(): Observable<Subject[]> {
         return this._httpClient
-          .get<Subject[]>(environment.apiUrl + '/' + SubjectEndPoint.GET_ALL_SUBJECT)
+          .get<{subjects: Subject []}>(environment.apiUrl + '/' + SubjectEndPoint.GET_ALL_SUBJECT)
           .pipe(
-            map((res: Subject[]) => this._mainAPIAdapter.subjectListAdaptor(res)),
+            map((res) => this._mainAPIAdapter.subjectListAdaptor(res.subjects)),
             catchError((err: ErrorResponse) => throwError(() => err))
           );
       }

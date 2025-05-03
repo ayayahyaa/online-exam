@@ -27,7 +27,6 @@ export class QuestionsService implements QuestionsAPI {
       );
   }
   allQuestionsOnExam(examId: string): Observable<QuestionsAdaptResponse> {
-    //     https://exam.elevateegy.com/api/v1/questions?exam=
     return this._httpClient
       .get<QuestionsResponse>(
         environment.apiUrl + '/' + QuestionEndPoint.GET_ALL_QUESTION_ON_EXAMS + examId
