@@ -1,6 +1,7 @@
 import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { SubjectService } from '../../core/services/subject.service';
 import { Subject } from '../../core/interfaces-subject/subject-interfaces';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,6 +11,8 @@ import { Subject } from '../../core/interfaces-subject/subject-interfaces';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent implements OnInit  {
+  private readonly _router = inject(Router);
+
   private readonly _subjectService = inject(SubjectService);
   subjects:WritableSignal<Subject[]> = signal([])
 
@@ -21,7 +24,29 @@ ngOnInit(): void {
     this._subjectService.getAllSubject().subscribe({
       next:(res)=>{
         console.log(res);
+        this.subjects.set(res.slice(0,6));
     },
+    error: (err) => {
+      console.error('Error', err);
+    }
     })
   }
+
+  getAllSubject():void{
+    this._subjectService.getAllSubject().subscribe({
+      next:(res)=>{
+        console.log(res);
+        this.subjects.set(res);
+    },
+    error: (err) => {
+      console.error('Error', err);
+    }
+    })
+  }
+
+  goToExam(SubjectId:string):void{
+    this._router.navigate(['/dashboard/select-diploma', SubjectId])
+  }
 }
+
+

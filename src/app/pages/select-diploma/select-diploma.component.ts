@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal, WritableSignal } from '@angular/core';
 import { CustomModalComponent } from '../../shared/ui/custom-modal/custom-modal.component';
 import { Store } from '@ngrx/store';
 import { AsyncPipe } from '@angular/common';
@@ -9,6 +9,11 @@ import { Observable } from 'rxjs';
 import { exmStatus } from '../../store/exam/exam.state';
 import * as ExamSelectors from '../../../app/store/exam/exam.selector';
 import * as QuestionActions from '../../../app/store/question/question.action';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ExamsService } from '../../core/services/exams.service';
+import { Exam } from '../../core/interfaces-exam/exam-interfaces';
+import { SubjectService } from '../../core/services/subject.service';
+
 
 
 
@@ -19,10 +24,18 @@ import * as QuestionActions from '../../../app/store/question/question.action';
   styleUrl: './select-diploma.component.scss'
 })
 export class SelectDiplomaComponent implements OnInit {
+  private readonly _activatedRoute = inject(ActivatedRoute);
+  private readonly _examService = inject(ExamsService);
+  private readonly _subjectService = inject(SubjectService);
 
 
-  private readonly _examId: string = '6700707030a3c3c1944a9c5d';
-  readonly examName: string = 'HTML';
+  exams: WritableSignal<Exam[]> = signal([]);
+
+
+
+
+  private   _examId: string = '6700707030a3c3c1944a9c5d';
+    examName: string = 'HTML';
   private readonly _store = inject(Store);
 
   isOpen$!: Observable<boolean>;
@@ -33,14 +46,36 @@ export class SelectDiplomaComponent implements OnInit {
     this.examStatus$ = this._store.select(ExamSelectors.selectExamStatus);
   }
 
-  startExam() {
+  startExam(examId: string) {
     this._store.dispatch(
       QuestionActions.loadQuestions({ examId: this._examId })
     );
+    console.log('Start exam:', examId);
+
   }
+
 
   ngOnInit(): void {
-    this.eventsChange();
+    const subjectId = this._activatedRoute.snapshot.paramMap.get('id') ?? '';
+    if (subjectId) {
+      this._subjectService.getExamBySubjectId(subjectId).subscribe({
+        next: (res) => {
+          console.log('exam' , res)
+          this.exams.set(res.exams);
+        },
+        error: (err) => {
+          console.error('Error loading exams', err);
+        },
+      });
+    }
   }
 
+
+
+
 }
+
+
+
+
+
