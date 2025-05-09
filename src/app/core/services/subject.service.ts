@@ -26,6 +26,6 @@ export class SubjectService implements SubjectsApi {
           );
       }
       getExamBySubjectId(subjectId: string): Observable<any> {
-        return this._httpClient.get(`${environment.apiUrl}/${ExamsEndPoint.GET_EXAMS_BY_ID}/${subjectId}`);
+        return this._httpClient.get(`${environment.apiUrl}${ExamsEndPoint.GET_ALL_EXAMS_ON_SUBJECT}/${subjectId}`);
       }
   }

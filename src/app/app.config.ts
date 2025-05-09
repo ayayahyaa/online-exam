@@ -16,7 +16,7 @@ import { environment } from './env/env';
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(withEventReplay()),
-    provideHttpClient(withFetch() , withInterceptors([headersInterceptor])),
+    provideHttpClient(withFetch() , withInterceptors([headersInterceptor ])),
     provideStore({
       exam: examReducer,
       question: questionReducer,

@@ -58,6 +58,8 @@ export class SelectDiplomaComponent implements OnInit {
   ngOnInit(): void {
     const subjectId = this._activatedRoute.snapshot.paramMap.get('id') ?? '';
     if (subjectId) {
+          console.log('subjectId', subjectId)
+
       this._subjectService.getExamBySubjectId(subjectId).subscribe({
         next: (res) => {
           console.log('exam' , res)
