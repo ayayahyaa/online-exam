@@ -46,7 +46,7 @@ export const routes: Routes = [
         title: 'quiz-history'
       },
       {
-        path: 'select-diploma/:id',
+        path: 'select-diploma/:subjectId',
         loadComponent: () => import('./pages/select-diploma/select-diploma.component').then(m => m.SelectDiplomaComponent),
         title: 'select-diploma'
       },

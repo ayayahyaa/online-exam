@@ -44,8 +44,8 @@ ngOnInit(): void {
     })
   }
 
-  goToExam(SubjectId:string):void{
-    this._router.navigate(['/dashboard/select-diploma', SubjectId])
+  goToExam(subjectId:string):void{
+    this._router.navigate(['/dashboard/select-diploma', subjectId])
   }
 }
 

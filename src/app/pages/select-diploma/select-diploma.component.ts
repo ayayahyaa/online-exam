@@ -28,14 +28,13 @@ export class SelectDiplomaComponent implements OnInit {
   private readonly _examService = inject(ExamsService);
   private readonly _subjectService = inject(SubjectService);
 
-
   exams: WritableSignal<Exam[]> = signal([]);
 
 
 
 
   private   _examId: string = '6700707030a3c3c1944a9c5d';
-    examName: string = 'HTML';
+  examName: string = 'HTML';
   private readonly _store = inject(Store);
 
   isOpen$!: Observable<boolean>;
@@ -51,29 +50,28 @@ export class SelectDiplomaComponent implements OnInit {
       QuestionActions.loadQuestions({ examId: this._examId })
     );
     console.log('Start exam:', examId);
-
   }
 
 
   ngOnInit(): void {
-    const subjectId = this._activatedRoute.snapshot.paramMap.get('id') ?? '';
-    if (subjectId) {
-          console.log('subjectId', subjectId)
+    this.getAllExams()
+  }
 
+
+  getAllExams():void{
+    const subjectId = this._activatedRoute.snapshot.paramMap.get('subjectId') ?? '';
+    if (subjectId) {
       this._subjectService.getExamBySubjectId(subjectId).subscribe({
         next: (res) => {
           console.log('exam' , res)
           this.exams.set(res.exams);
         },
         error: (err) => {
-          console.error('Error loading exams', err);
+          console.error('Error', err);
         },
       });
     }
   }
-
-
-
 
 }
 

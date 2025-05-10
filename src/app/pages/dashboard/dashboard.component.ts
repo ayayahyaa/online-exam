@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { Router, RouterLink, RouterOutlet } from '@angular/router';
+import { Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { inject } from '@angular/core';
 import { AuthApiService } from '../../../../projects/auth-api/src/public-api';
 import { Subscription } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { NgClass } from '@angular/common';
 
 
 @Component({
   selector: 'app-dashboard',
-  imports: [RouterOutlet , RouterLink ],
+  imports: [RouterOutlet , RouterLink , RouterLinkActive , NgClass],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
@@ -23,8 +24,11 @@ export class DashboardComponent {
   isSuccess :string = ""
   userData:any;
 
+  isLogoutActive = false;
+
 
   logout(){
+      this.isLogoutActive = true;
       this.logoutSubscription= this.authApiService.logout().subscribe({
         next: (res) => {
           console.log(res);
@@ -46,10 +50,7 @@ export class DashboardComponent {
       })
     }
     ngOnDestroy(): void {
-      this.logoutSubscription?.unsubscribe();
-
-
-
+      this.logoutSubscription?.unsubscribe()
+}
 }
 
-}

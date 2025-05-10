@@ -1,8 +1,9 @@
 <section class="w-full py-8 bg-white md:px-6 lg:px-8">
   <div class="container mx-auto">
-    <h2 class="mb-8 text-2xl font-semibold text-gray-900">Available Exams</h2>
+    <h2 class="mb-8 text-2xl font-semibold text-gray-900">Front-End Quiz</h2>
 
-    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+    <div (click)="getAllExams()"
+    class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
       @for (exam of exams(); track exam._id) {
         <article
           (click)="startExam(exam._id)"
@@ -11,9 +12,9 @@
           <div class="flex flex-col justify-between h-full p-6 bg-white">
             <div>
               <h3 class="mb-2 text-lg font-bold text-gray-900">{{ exam.title }}</h3>
-              <p class="text-sm text-gray-600">{{ exam.numberOfQuestions }} Questions</p>
+              <p class="text-sm text-gray-600">{{ exam.numberOfQuestions }}</p>
             </div>
-            <p class="mt-4 text-sm text-gray-500">Duration: {{ exam.duration }} mins</p>
+            <p class="mt-4 text-sm text-gray-500">{{ exam.duration }} Question</p>
           </div>
         </article>
       }

@@ -17,17 +17,21 @@
   <div class="p-6 space-y-6 bg-white shadow-md sm:hidden">
       <img src="/images/Final Logo 1.png" alt="Elevate Logo" class="w-32">
 
-    <div class="mt-4 space-y-4">
-      <a routerLink="/dashboard/home" class="inline-flex items-center gap-3 px-4 py-2 text-white bg-blue-600 rounded-xl">
+    <div class="inline-flex flex-col mt-4 space-y-4 ">
+      <a routerLink="/dashboard/home"
+      routerLinkActive="bg text-white"
+      class="inline-flex items-center gap-3 px-4 py-2 text-gray-700 rounded-xl">
         <i class="fa-solid fa-table-columns"></i>
         <span>Dashboard</span>
       </a>
-      <a routerLink="/dashboard/quiz-history"  class="flex items-center gap-3 text-gray-700">
-        <i class="text-blue-600 fa-solid fa-clock-rotate-left"></i>
+      <a routerLink="/dashboard/quiz-history"
+      routerLinkActive="bg text-white"
+      class="inline-flex items-center gap-3 px-4 py-2 text-gray-700">
+        <i class=" fa-solid fa-clock-rotate-left"></i>
         <span>Quiz History</span>
       </a>
-    <button (click)="logout()" class="inline-flex items-center gap-3 text-gray-700">
-  <i class="text-blue-600 fa-solid fa-right-from-bracket fa-flip-horizontal"></i>
+    <button (click)="logout()" class="inline-flex items-center gap-3 px-4 py-2 text-gray-700">
+  <i class=" fa-solid fa-right-from-bracket fa-flip-horizontal"></i>
   <span>Log Out</span>
 </button>
     </div>
@@ -40,33 +44,46 @@
     </a>
     <ul class="space-y-8 menu">
       <li>
-        <a routerLink="/dashboard/home"
-          class="inline-flex items-center px-4 py-4 transition-colors duration-200 rounded-lg">
-          <i class="mr-6 text-lg fa-solid fa-window-restore text-colorNavLink"></i>
-          <span class="text-xl font-semibold text-colorNavLink">Dashboard</span>
-        </a>
-      </li>
-      <li>
-        <a routerLink="/dashboard/quiz-history"
-          class="inline-flex items-center px-4 py-4 transition-colors duration-200 rounded-lg">
-          <i class="mr-6 text-lg fa-solid fa-clock-rotate-left text-colorNavLink"></i>
-          <span class="text-xl font-semibold whitespace-nowrap text-colorNavLink">Quiz History</span>
-        </a>
-      </li>
-      <li class="mt-6">
-        <button (click)="logout()" type="submit"
-          class="inline-flex items-center px-4 py-4 transition-colors duration-200 rounded-lg group"
-          [disabled]="isLoading" aria-label="Log out">
-          @if (isLoading) {
-            <i class="mr-6 text-lg fa-solid fa-spinner animate-spin"></i>
-            <span class="text-xl font-semibold ">Logging out </span>
-          }
-          @else {
-            <i class="mr-6 text-2xl fa-solid fa-right-from-bracket fa-flip-horizontal text-colorNavLink"></i>
-            <span class="text-lg font-semibold whitespace-nowrap">Log Out </span>
-          }
-        </button>
-      </li>
+      <!-- Dashboard Link -->
+<li>
+  <a
+    routerLink="/dashboard/home"
+    routerLinkActive="bg text-white"
+    class="inline-flex items-center px-3 py-4 text-gray-700 transition-colors duration-200 rounded-lg group"
+  >
+    <i class="mr-6 text-lg fa-solid fa-window-restore group-[.bg]:text-white text-colorNavLink"></i>
+    <span class="text-xl font-semibold whitespace-nowrap">Dashboard</span>
+  </a>
+</li>
+<!-- Quiz History Link -->
+<li class="mt-2">
+  <a
+    routerLink="/dashboard/quiz-history"
+    routerLinkActive="bg text-white"
+    class="inline-flex items-center px-3 py-4 text-gray-700 transition-colors duration-200 rounded-lg group"
+  >
+    <i class="mr-6 text-colorNavLink group-[.bg]:text-white text-lg fa-solid fa-clock-rotate-left"></i>
+    <span class="text-xl font-semibold whitespace-nowrap">Quiz History</span>
+  </a>
+</li>
+
+<!-- Log Out Button -->
+<li class="mt-6">
+  <button
+    (click)="logout()"
+    type="submit"
+    class="inline-flex items-center px-3 py-4 text-gray-700 transition-colors duration-200 rounded-lg"
+    [disabled]="isLoading"
+    aria-label="Log out">
+    @if (isLoading) {
+      <i class="mr-6 text-lg fa-solid fa-spinner animate-spin"></i>
+      <span class="text-xl font-semibold">Logging out</span>
+    } @else {
+      <i class="mr-6 text-2xl fa-solid fa-right-from-bracket fa-flip-horizontal text-colorNavLink"></i>
+      <span class="text-lg font-semibold whitespace-nowrap">Log Out</span>
+    }
+  </button>
+</li>
     </ul>
   </div>
 
