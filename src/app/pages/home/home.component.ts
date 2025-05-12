@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit  {
   private readonly _subjectService = inject(SubjectService);
   subjects:WritableSignal<Subject[]> = signal([])
 
+  allShown = false;
+
 ngOnInit(): void {
   this.getSubject()
 }
@@ -24,7 +26,7 @@ ngOnInit(): void {
     this._subjectService.getAllSubject().subscribe({
       next:(res)=>{
         console.log(res);
-        this.subjects.set(res.slice(0,6));
+        this.subjects.set(res.slice(0,4));
     },
     error: (err) => {
       console.error('Error', err);
@@ -37,6 +39,7 @@ ngOnInit(): void {
       next:(res)=>{
         console.log(res);
         this.subjects.set(res);
+        this.allShown = true;
     },
     error: (err) => {
       console.error('Error', err);

@@ -30,6 +30,8 @@ export class SelectDiplomaComponent implements OnInit {
 
   exams: WritableSignal<Exam[]> = signal([]);
 
+  noData: WritableSignal<boolean> = signal(false);
+
 
 
 
@@ -57,25 +59,23 @@ export class SelectDiplomaComponent implements OnInit {
     this.getAllExams()
   }
 
-
-  getAllExams():void{
+  getAllExams(): void {
     const subjectId = this._activatedRoute.snapshot.paramMap.get('subjectId') ?? '';
     if (subjectId) {
       this._subjectService.getExamBySubjectId(subjectId).subscribe({
         next: (res) => {
-          console.log('exam' , res)
-          this.exams.set(res.exams);
+          if (res.exams && res.exams.length > 0) {
+            this.exams.set(res.exams);
+            this.noData.set(false); 
+          } else {
+            this.noData.set(true);
+          }
         },
         error: (err) => {
           console.error('Error', err);
+          this.noData.set(true);
         },
       });
     }
   }
-
 }
-
-
-
-
-

@@ -20,11 +20,11 @@
         <span>Dashboard</span>
       </a>
       <a routerLink="/dashboard/quiz-history" routerLinkActive="bg text-white"
-        class="inline-flex items-center gap-3 px-4 py-2 text-gray-700">
+        class="inline-flex items-center gap-3 px-4 py-2 text-gray-700 rounded-xl">
         <i class="fa-solid fa-clock-rotate-left text-colorNavLink"></i>
         <span>Quiz History</span>
       </a>
-      <button (click)="logout()" class="inline-flex items-center gap-3 px-4 py-2 text-gray-700">
+      <button (click)="logout()" class="inline-flex items-center gap-3 px-4 py-2 text-gray-700 rounded-xl">
         <i class="fa-solid fa-right-from-bracket fa-flip-horizontal text-colorNavLink"></i>
         <span>Log Out</span>
       </button>
@@ -70,14 +70,13 @@
   <!-- Right Side -->
   <div class="w-full sm:w-[70%] lg:w-[80%] flex flex-col gap-6">
   <!-- Search Bar (All Screens) -->
-<div class="items-center lg:w-[85%] sm:w-[80%] ml-4 justify-between hidden w-full gap-6 px-6 py-2 bg-wfa-helicopter-symbol sm:flex">
+<div class="items-center  w-[85%] ml-4 justify-between hidden gap-6 px-6 py-2 bg-wfa-helicopter-symbol sm:flex">
   <div class="relative flex-1">
     <span class="absolute z-10 -translate-y-1/2 left-4 top-[1.5625rem]">
       <i class="fa-solid fa-magnifying-glass text-[#1935CA]"></i>
     </span>
-    <!-- تحديد مقاس الإدخال في الديسكتوب -->
     <input type="text" placeholder="Search Quiz"
-      class="w-full h-12 sm:h-12 lg:h-12  pl-12 pr-4 py-4 text-[#696F79] bg-white border-white shadow-[2px_2px_6px_2px_rgba(0,0,0,0.1)] rounded-xl focus:ring-2 focus:ring-white focus:border-white" />
+      class="w-full h-12  pl-12 pr-4 py-4 text-[#696F79] bg-white border-white shadow-[2px_2px_6px_2px_rgba(0,0,0,0.1)] rounded-xl focus:ring-2 focus:ring-white focus:border-white" />
   </div>
   <div class="flex flex-row items-center gap-3">
     <button
