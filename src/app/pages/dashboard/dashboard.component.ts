@@ -9,7 +9,7 @@ import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [RouterOutlet , RouterLink , RouterLinkActive , NgClass],
+  imports: [RouterOutlet , RouterLink , RouterLinkActive ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })
