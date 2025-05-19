@@ -26,7 +26,7 @@ ngOnInit(): void {
     this._subjectService.getAllSubject().subscribe({
       next:(res)=>{
         console.log(res);
-        this.subjects.set(res.slice(0,4));
+        this.subjects.set(res.slice(0,5));
     },
     error: (err) => {
       console.error('Error', err);
@@ -38,7 +38,7 @@ ngOnInit(): void {
     this._subjectService.getAllSubject().subscribe({
       next:(res)=>{
         console.log(res);
-        this.subjects.set(res);
+        this.subjects.set(res.slice(0,9));
         this.allShown = true;
     },
     error: (err) => {

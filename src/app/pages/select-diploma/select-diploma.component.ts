@@ -29,9 +29,7 @@ export class SelectDiplomaComponent implements OnInit {
   private readonly _subjectService = inject(SubjectService);
 
   exams: WritableSignal<Exam[]> = signal([]);
-
   noData: WritableSignal<boolean> = signal(false);
-
 
 
 
@@ -57,6 +55,7 @@ export class SelectDiplomaComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllExams()
+    this.eventsChange()
   }
 
   getAllExams(): void {
@@ -66,7 +65,7 @@ export class SelectDiplomaComponent implements OnInit {
         next: (res) => {
           if (res.exams && res.exams.length > 0) {
             this.exams.set(res.exams);
-            this.noData.set(false); 
+            this.noData.set(false);
           } else {
             this.noData.set(true);
           }

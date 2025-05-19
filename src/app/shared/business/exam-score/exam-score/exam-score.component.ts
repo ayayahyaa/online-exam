@@ -8,8 +8,6 @@ import { BaseChartDirective } from 'ng2-charts';
 
 
 
-
-
 @Component({
   selector: 'app-exam-score',
   imports: [BaseChartDirective],

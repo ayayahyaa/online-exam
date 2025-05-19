@@ -5,7 +5,7 @@
     [hidden] ="noData()">
     Front-End Quiz</h2>
     <div
-      class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+      class="grid grid-cols-1 gap-6">
       @if(noData()) {
             <div class="text-xl font-semibold text-gray-800 col-span-full">
             No Exam Available 🙃
@@ -14,7 +14,7 @@
       @for (exam of exams(); track exam._id) {
         <article
           (click)="startExam(exam._id)"
-          class="flex items-center justify-between px-6 py-4 gap-1 lg:w-[60.4375rem] h-[6.4375rem] bg-white rounded-xl shadow-[0px_0px_4px_0px_rgba(0,0,0,0.1)] transition-all duration-300">
+          class="flex items-center justify-between px-6 py-4 gap-1  bg-white rounded-xl shadow-[0px_0px_4px_0px_rgba(0,0,0,0.1)] transition-all duration-300">
           <div class="flex items-center gap-4">
             <i class="p-3 text-2xl text-white bg-blue-600 fa-solid fa-book rounded-2xl"></i>
             <div class="flex flex-col gap-1">
@@ -24,7 +24,6 @@
               </span>
             </div>
           </div>
-
           <div class="flex flex-col items-center gap-2">
             <span class="font-normal text-black text-md">
               {{ exam.duration || 15 }} Minutes

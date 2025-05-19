@@ -14,35 +14,32 @@ import { AsyncPipe } from '@angular/common';
   styleUrl: './exam-summry.component.scss'
 })
 export class ExamSummryComponent implements OnInit  {
-
-
-
    // wrongQuestions: QuestionAdapt[] = [] as QuestionAdapt[];
 
-   wrongQuestions$!: Observable<QuestionAdapt[]>;
+  wrongQuestions$!: Observable<QuestionAdapt[]>;
 
-   private readonly _store = inject(Store);
+  private readonly _store = inject(Store);
 
-   getWrongQuestions() {
+  getWrongQuestions() {
      // this._store.select(QuestionSelectors.selectWrongQuestions).subscribe({
      //   next: (dataList) => {
      //     this.wrongQuestions = dataList;
      //   },
      // });
 
-     this.wrongQuestions$ = this._store.select(
-       QuestionSelectors.selectWrongQuestions
-     );
-   }
+    this.wrongQuestions$ = this._store.select(
+      QuestionSelectors.selectWrongQuestions
+    );
+  }
 
-   closeModal() {
+  closeModal() {
      // Clear Exam State
-     this._store.dispatch(ExamActions.resetExamState());
+    this._store.dispatch(ExamActions.resetExamState());
      //Clear Question State
-     this._store.dispatch(QuestionActions.resetQuestionState());
-   }
+    this._store.dispatch(QuestionActions.resetQuestionState());
+  }
 
-   ngOnInit(): void {
-     this.getWrongQuestions();
-   }
- }
+  ngOnInit(): void {
+    this.getWrongQuestions();
+  }
+}
