@@ -22,5 +22,5 @@ And yes, the whole website is fully responsive across all screen sizes 📱💻
 
 The goal was to build a smart, organized, and smooth educational experience for every user 😎
 
-live Demo : https://online-exam-fy6w.vercel.app/
+live Demo : https://online-exam-fy6w.vercel.app
 
